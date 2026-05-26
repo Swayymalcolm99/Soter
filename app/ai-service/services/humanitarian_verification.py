@@ -10,7 +10,9 @@ import httpx
 
 from config import settings
 from services.humanitarian_prompt import HumanitarianPromptEngine
+from services.circuit_breaker import CircuitBreaker
 from services.test_provider import TestProvider
+from exceptions import AIServiceError
 
 logger = logging.getLogger(__name__)
 
