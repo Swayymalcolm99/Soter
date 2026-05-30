@@ -81,13 +81,13 @@ class Settings(BaseSettings):
     @model_validator(mode="after")
     def apply_environment_defaults(self) -> "Settings":
         if self.app_env == "staging":
-            self.request_rate_limit = self.request_rate_limit or "5/minute"
+            self.request_rate_limit = "5/minute"
             self.ai_deterministic_mode = True
             if not (self.openai_api_key or self.groq_api_key or self.test_provider_mode):
                 self.test_provider_mode = True
 
         if self.app_env == "test":
-            self.request_rate_limit = self.request_rate_limit or "5/minute"
+            self.request_rate_limit = "5/minute"
             self.ai_deterministic_mode = True
             if not (self.openai_api_key or self.groq_api_key or self.test_provider_mode):
                 self.test_provider_mode = True
